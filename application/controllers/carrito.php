@@ -54,16 +54,8 @@ class Carrito extends CI_Controller {
             $update = $this->cart->update($data);
         }
         
-        // Respuesta de devolución
-        if($update)
-        {
-            echo 'Ok';
-        }
-        else 
-        {
-            echo 'Error';
-        }
-        //echo $update?'Ok':'Error';
+        // Respuesta de devolución       
+        echo $update?'Ok':'Error';
     }
     public function removerItem($rowid)
     {

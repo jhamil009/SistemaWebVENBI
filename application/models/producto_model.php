@@ -30,21 +30,6 @@ class Producto_model extends CI_Model {
 		$this->db->insert('producto',$data);
 		$idproducto=$this->db->insert_id();
 
-
-		//el numero 5 puede ser sustituido por el numero de filas afectadas en una consulta
-		//$this->db->count_all('my_table') === 5
-
-		/*for ($i = 1; $i <= $this->db->count_all('talla'); $i++)
-		{	
-			$num=38;
-
-			$data1['idProducto']=$idproducto;
-			$data1['idTalla']=$i;
-			$data1['cantidad']=$tallaN.$num;
-			$this->db->insert('stock',$data1);
-
-			$num++;			
-		}*/
 		$data1['idProducto']=$idproducto;
 		$data1['idTalla']=1;
 		$data1['cantidad']=$tallaN38;
@@ -157,6 +142,7 @@ class Producto_model extends CI_Model {
             return false;    
         }                 
     } 
+   	//Pagina de inico seccion de productos nuevos
     public function productosNuevos()
     {
     	$this->db->select('*');
