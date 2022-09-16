@@ -9,7 +9,7 @@ class Producto extends CI_Controller {
 		{
 			$lista=$this->producto_model->listar();
 			$data['producto']=$lista;			
-			//alerta de CRUD
+			//Alerta de CRUD
 			$data['msg']=$this->uri->segment(3);		
 
 			$this->load->view('inc/header.php');
@@ -98,7 +98,7 @@ class Producto extends CI_Controller {
 				$config['allowed_types']="jpg";
 				$config['max_size']="10000"; //kb
 
-				//cargar configuracion
+				//Cargar configuracion
 				$this->load->library('upload',$config);
 
 				if (!$this->upload->do_upload($archivo)) 
@@ -113,7 +113,7 @@ class Producto extends CI_Controller {
 				}
 
 				$this->producto_model->agregar($data, $tallaN38, $tallaN39, $tallaN40, $tallaN41, $tallaN42);
-				//mensaje de registro		
+				//Mensaje de registro		
 				redirect('producto/index/1','refresh');
 			}
 		}
@@ -122,7 +122,7 @@ class Producto extends CI_Controller {
 			redirect('administrador/index','refresh');
 		}	
 	}
-	//Validacion de archivos (Registrar)
+	//Validacion de archivos formato Imagen (Registrar)
 	public function file_check($str)
 	{
         $allowed_mime_type_arr = array('image/jpeg');
