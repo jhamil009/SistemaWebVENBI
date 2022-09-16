@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_model extends CI_Model {
 	
+	//CRUD de Administradores
 	public function listar()
 	{		
 		$this->db->select('*');
