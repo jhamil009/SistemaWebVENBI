@@ -83,7 +83,7 @@ class Administrador extends CI_Controller {
 		{
 			$lista=$this->admin_model->listar();
 			$data['empleado']=$lista;
-			//alertas de CRUD
+			//Alertas de CRUD
 			$data['msg']=$this->uri->segment(3);
 
 			$this->load->view('inc/header.php');
