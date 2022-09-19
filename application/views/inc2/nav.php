@@ -49,9 +49,11 @@
             ?>  
                 <a href="<?php echo base_url();?>index.php/carrito" class="header-button full-box text-center" title="Carrito" >
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge bg-primary rounded-pill bag-count" >
-                        <?php echo $this->cart->total_items(); ?>
-                    </span>
+                    <?php if($this->cart->total_items() > 0) { ?>
+                        <span class="badge bg-primary rounded-pill bag-count">
+                            <?php echo $this->cart->total_items(); ?>
+                        </span>                       
+                    <?php } ?>                    
                 </a>                                                                             
                 <div class="header-button full-box text-center" id="userMenu" data-mdb-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?php echo $this->session->userdata('login'); ?>" >
                     <i class="fas fa-user-circle"></i>                                                        
