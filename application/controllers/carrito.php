@@ -16,19 +16,43 @@ class Carrito extends CI_Controller {
         $this->load->view('web-carrito.php', $data);    
         $this->load->view('inc2/footer.php');        
 	}
-    public function agregarCarrito($idproducto)
+    public function agregarCarrito()
     {       
-        // Obtener producto específico por ID
-        $producto=$this->producto_model->obtenerFila($idproducto);        
-                
+        // Obtener producto específico por ID            
+        $idproducto=$_POST['idproducto'];
+        $idtalla=$_POST['idtalla'];
+        $idstock=$_POST['idstock'];
+        
+        $precio=$_POST['precio'];
+        $foto=$_POST['foto'];
+        $modelo=$_POST['modelo'];
+        $talla=$_POST['talla'];
+        $color=$_POST['color'];
+
+        $producto=$this->producto_model->obtenerFila($idproducto,$idtalla);
+
+        if(sizeof($producto) > 0) {
+            echo 'BIEN';
+
+             $data = array(
+                        
+                'id' => $idstock,
+                'qty' => 1,
+                'price' => $precio,            
+                'name' => $modelo,
+                'image' => $foto,
+                'size' => $talla,
+                'color' => $color
+                                                    
+            );
+        }
+        else {
+            echo 'MAL';            
+        }
+        //$id=$producto['P.idProducto'];
+
         // Agregar producto al carrito
-        $data = array(
-            'id'=> $producto['P.idProducto'],
-            'qty'=>1,
-            'price'=>$producto['P.precioUnitario'],            
-            'name'=>$producto['M.modelo'],
-            'image'=>$producto['P.foto']
-        );
+       
 
         $this->cart->insert($data);
               
