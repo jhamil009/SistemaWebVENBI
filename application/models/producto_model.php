@@ -112,36 +112,35 @@ class Producto_model extends CI_Model {
 	}
 
 	//Proceso Venta
-	public function obtenerFila($idproducto="")
+	public function obtenerFila($idproducto,$idtalla)
     {    	    	
-        $this->db->select('*');
-        $this->db->from('producto P');
+       	$this->db->select('*');
+        $this->db->from('stock S');
+        $this->db->join('talla T', 'T.idTalla = S.idTalla');
+        $this->db->join('producto P', 'P.idProducto = S.idProducto');
         $this->db->join('modelo M', 'M.idModelo = P.idModelo');
-        $this->db->where('P.estado', 1);
-        $this->db->where('M.estado', 1);
+        $this->db->where('P.idProducto', $idproducto);          
+        $this->db->where('T.idTalla', $idtalla);  
+        $query = $this->db->get();
+        $result = $query->row_array();                     
         
-        if($idproducto)
-        {
-            $this->db->where('P.idProducto',$idproducto);
-            $query = $this->db->get();
-            $result = $query->row_array();
-        }
-        else
-        {            
-            $query = $this->db->get();
-            $result = $query->result_array();
-        }
-        
-        // Devolver datos obtenidos   
-        if (!empty($result))
-        {        	
-            return $result;
-        }   
-        else 
-        {
-            return false;    
-        }                 
+        return !empty($result)?$result:false;              
     } 
+
+    //idproducto talla
+    public function productoDetalleTalla($idproducto)
+    {
+    	$this->db->select('*');
+        $this->db->from('stock S');
+        $this->db->join('talla T', 'T.idTalla = S.idTalla');
+        $this->db->join('producto P', 'P.idProducto = S.idProducto');
+        $this->db->join('modelo M', 'M.idModelo = P.idModelo');
+        $this->db->where('P.idProducto', $idproducto);  
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return !empty($result)?$result:false;              
+    }
+
    	//Pagina de inico seccion de productos nuevos
     public function productosNuevos()
     {
