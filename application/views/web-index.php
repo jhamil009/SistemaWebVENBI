@@ -26,20 +26,24 @@
         </div>
     </div>
 </div>
-<br>
 <div class="container-fluid">
-    <h2>NUEVOS PRODUCTOS</h2>
     <div class="row">
-    <?php         
-    foreach ($productosNuevos->result() as $row)
-    {
-    $foto=$row->foto;
-    ?>
+        <dir class="col-12 col-md-12">
+            <figure class="full-box">
+                <img src="<?php echo base_url(); ?>externo/assets/img/portadaInicio2.jpg" alt="registration_company" class="img-fluid" style="width: 100%;">
+            </figure>
+        </dir>
+    </div>
+</div><br>
+<div class="container-fluid">
+    <h3 class="text-uppercase poppins-regular" style="margin-left: 8px;">NUEVOS PRODUCTOS</h3>
+    <div class="row">
+        <?php foreach ($productosNuevos->result() as $row) {  ?>
         <div class="col-sm-3">
             <div class="container-cards full-box">
                 <div class="card-product div-bordered bg-white shadow-2">
                     <figure class="card-product-img">
-                        <img src="<?php echo base_url(); ?>/uploads/<?php echo $foto; ?>" class="img-fluid" alt="botas" />
+                        <img src="<?php echo base_url(); ?>/uploads/<?php echo $row->foto; ?>" class="img-fluid" alt="botas" />
                     </figure>
                     <div class="card-product-body">
                         <div class="card-product-content scroll">
@@ -57,16 +61,21 @@
                 </div>
             </div>
         </div>        
-    <?php        
-    }
-    ?>
+        <?php } ?>
+    </div>
+</div><br>
+
+<div class="container-fluid">
+    <div class="row">
+        <dir class="col-12 col-md-12">
+            <figure class="full-box">
+                <img src="<?php echo base_url(); ?>externo/assets/img/portadaInicio1.jpg" alt="registration_company" class="img-fluid" style="width: 100%;">
+            </figure>
+        </dir>
     </div>
 </div>
 
-<?php 
-if(!$this->session->userdata('login'))
-{
-?>
+<?php if(!$this->session->userdata('login')) { ?>
 <div class="container container-web-page">
     <div class="row justify-content-md-center">
         <div class="col-12 col-md-6">
@@ -89,9 +98,4 @@ if(!$this->session->userdata('login'))
         </div>
     </div>
 </div>
-<?php 
-}
-?>
-
-
-
+<?php } ?>
