@@ -1,4 +1,4 @@
-<div class="full-box bg-white">
+<div class="full-box bg-gray">
     <div class="container container-web-page">
         <h3 class="font-weight-bold poppins-regular text-uppercase">Detalles del producto</h3>
         <hr>
