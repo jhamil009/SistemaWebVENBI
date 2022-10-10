@@ -74,28 +74,3 @@
         </dir>
     </div>
 </div>
-
-<?php if(!$this->session->userdata('login')) { ?>
-<div class="container container-web-page">
-    <div class="row justify-content-md-center">
-        <div class="col-12 col-md-6">
-            <figure class="full-box">
-                <img src="<?php echo base_url(); ?>externo/assets/img/registration.png" alt="registration_company" class="img-fluid">
-            </figure>
-        </div>
-        <div class="w-100"></div>
-        <div class="col-12 col-md-6">
-            <h3 class="text-center text-uppercase poppins-regular font-weight-bold">Crea tu cuenta</h3>
-            <p class="text-justify">
-                Crea tu cuenta para poder realizar pedidos de productos hasta la puesta de tu casa, es muy fácil y rápido.
-            </p>
-             <p class="text-center">
-                <a href="<?php echo base_url(); ?>index.php/cliente/index" class="btn btn-primary">Iniciar Sesión</a>
-            </p>
-            <p class="text-center">
-                <a href="<?php echo base_url(); ?>index.php/cliente/agregarUsuario" class="btn btn-primary">Crear cuenta</a>
-            </p>
-        </div>
-    </div>
-</div>
-<?php } ?>
