@@ -140,18 +140,4 @@ class Producto_model extends CI_Model {
         $result = $query->result_array();
         return !empty($result)?$result:false;              
     }
-
-   	//Pagina de inico seccion de productos nuevos
-    public function productosNuevos()
-    {
-    	$this->db->select('*');
-        $this->db->from('producto P');
-        $this->db->join('modelo M', 'M.idModelo = P.idModelo');
-        $this->db->where('P.estado', 1);
-        $this->db->where('M.estado', 1);
-        $this->db->order_by('P.fechaRegistro', 'DESC');
-        $this->db->limit(4);
-
-        return $this->db->get();
-    }
 }
