@@ -3,16 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Producto_model extends CI_Model {
 
-	public function listar()
-	{
-		$this->db->select('P.foto, M.nombreModelo, P.descripcion, P.color, P.precioUnitario, P.stockTotal, P.fechaRegistro, P.fechaActualizacion, P.idUser, P.idProducto');
-		$this->db->from('producto P');
-		$this->db->join('modelo M', 'M.idModelo = P.idModelo');		
-		$this->db->where('P.estado', 1);
-		$this->db->where('M.estado', 1);
-		
-		return $this->db->get();
-	}
+
 	public function listaDesabilitados()
 	{
 		$this->db->select('P.foto, M.nombreModelo, P.descripcion, P.color, P.precioUnitario, P.stockTotal, P.fechaRegistro, P.fechaActualizacion, P.idUser, P.idProducto');
