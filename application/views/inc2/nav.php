@@ -20,8 +20,8 @@
                         </a>
                     </li>                  
                     <li>
-                        <a href="#">
-                            <i class="fas fa-id-card-alt"></i>&nbsp;&nbsp;Contactos
+                        <a href="<?php echo base_url(); ?>index.php/tienda/compras">
+                            <i class="fas fa-store-alt"></i>&nbsp;&nbsp;Compras
                         </a>
                     </li>
                     <?php 
@@ -63,7 +63,7 @@
                         <i class="fas fa-user-circle fa-3x"></i><br>
                         <small><?php echo $this->session->userdata('login'); ?></small>
                     </p>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="<?php echo base_url();?>index.php/tienda/compras">
                         <i class="fas fa-shopping-cart"></i> &nbsp; Compras
                     </a>
                     <a class="dropdown-item" href="<?php echo base_url();?>index.php/cliente/logout">
