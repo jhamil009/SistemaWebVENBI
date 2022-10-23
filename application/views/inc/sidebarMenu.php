@@ -85,8 +85,8 @@
               </li>
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>index.php/producto/index" class="nav-link">
-                  <i class="fas fa-boxes nav-icon"></i>
-                  <p>Inventario de productos</p>
+                  <i class="fas fa-clipboard-list nav-icon"></i>
+                  <p>Lista de productos</p>
                 </a>
               </li>             
             </ul>
@@ -99,65 +99,21 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview ml-3">              
+            <ul class="nav nav-treeview ml-3">    
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-file-invoice-dollar nav-icon"></i>
-                  <p>Ventas realizadas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/venta/listarPendiente" class="nav-link">
                   <i class="fas fa-truck-loading nav-icon"></i>
                   <p>Pedidos pendientes</p>
                 </a>
-              </li>             
-            </ul>
-          </li>
-           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-university"></i>                        
-              <p>Cuentas Bancarias
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview ml-3">              
+              </li>            
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-plus nav-icon"></i>
-                  <p>Agregar cuenta</p>
+                <a href="<?php echo base_url();?>index.php/venta/listarVentasCompletadas" class="nav-link">
+                  <i class="fas fa-file-invoice-dollar nav-icon"></i>
+                  <p>Ventas realizadas</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-clipboard-list nav-icon"></i>
-                  <p>Lista de cuentas</p>
-                </a>
-              </li>             
+              </li>                        
             </ul>
           </li>          
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs"></i>
-              <p>Configuraciones
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview ml-3">              
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-store-alt nav-icon"></i>
-                  <p>Microempresa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-user-cog nav-icon"></i>
-                  <p>Cuenta</p>
-                </a>
-              </li>             
-            </ul>
-          </li>
           <li class="nav-item">
             <a href="<?php echo base_url(); ?>index.php/dashboard/homeTienda" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
