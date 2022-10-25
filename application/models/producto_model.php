@@ -138,6 +138,7 @@ class Producto_model extends CI_Model {
         $this->db->where('P.idProducto', $idproducto);  
         $query = $this->db->get();
         $result = $query->result_array();
+        
         return !empty($result)?$result:false;              
     }
 
