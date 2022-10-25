@@ -88,7 +88,7 @@ class Cliente extends CI_Controller {
 		$this->load->view('inc/footer.php');
 	}
 
-	//Modo desde el Administrador
+	//-- Modo desde el Administrador
 	public function listar()
 	{
 		if($this->session->userdata('login') && $this->session->userdata('tipo')=='administrador' && $this->session->userdata('estado')==1)
@@ -245,7 +245,7 @@ class Cliente extends CI_Controller {
 		}
 		else 
 		{
-			//Todo Ok
+			//ok
 			$idcliente=$_POST['idcliente'];	
 			$fechaActualizacion=date('Y-m-d H:i:s');
 			$idusuario=$this->session->userdata('idusuario');
@@ -302,7 +302,7 @@ class Cliente extends CI_Controller {
 		{
 			$lista=$this->cliente_model->listaDesabilitados();
 			$data['cliente']=$lista;
-			//Alertas de CRUD
+			//alertas de CRUD
 			$data['msg']=$this->uri->segment(3);
 
 			$this->load->view('inc/header.php');
@@ -332,7 +332,7 @@ class Cliente extends CI_Controller {
 			$data['idUser']=$idusuario;
 			
 			$this->cliente_model->modificar($idcliente,$data);
-			//Mensaje de eliminacion logica
+			//mensaje de eliminacion logica
 			redirect('cliente/listar/4','refresh');
 		}
 		else

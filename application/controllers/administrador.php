@@ -41,7 +41,7 @@ class Administrador extends CI_Controller {
 			$password=md5($_POST['password']);
 			$consulta=$this->usuario_model->validarAdmin($login, $password);
 			
-			if ($consulta->num_rows() > 0)
+			if($consulta->num_rows() > 0)
 			{
 				//tenemos una validacion efectiva
 				foreach ($consulta->result() as $row)
@@ -83,7 +83,7 @@ class Administrador extends CI_Controller {
 		{
 			$lista=$this->admin_model->listar();
 			$data['empleado']=$lista;
-			//Alertas de CRUD
+			//alertas de CRUD
 			$data['msg']=$this->uri->segment(3);
 
 			$this->load->view('inc/header.php');

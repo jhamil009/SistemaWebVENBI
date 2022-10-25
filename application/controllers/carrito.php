@@ -23,17 +23,18 @@ class Carrito extends CI_Controller {
         $idtalla=$_POST['idtalla'];
         $idstock=$_POST['idstock'];
         
+        //informacion del producto
         $precio=$_POST['precio'];
         $foto=$_POST['foto'];
         $modelo=$_POST['modelo'];
         $talla=$_POST['talla'];
         $color=$_POST['color'];
+        $cantidad=$_POST['cantidad'];
 
         $producto=$this->producto_model->obtenerFila($idproducto,$idtalla);
 
-        if(sizeof($producto) > 0) {
-            echo 'BIEN';
-
+        if(sizeof($producto) > 0) 
+        {            
              $data = array(
                         
                 'id' => $idstock,
@@ -42,18 +43,11 @@ class Carrito extends CI_Controller {
                 'name' => $modelo,
                 'image' => $foto,
                 'size' => $talla,
-                'color' => $color
-                                                    
+                'color' => $color,
+                'stock' => $cantidad                                           
             );
-        }
-        else {
-            echo 'MAL';            
-        }
-        //$id=$producto['P.idProducto'];
-
-        // Agregar producto al carrito
-       
-
+        }                
+        // Agregar producto al carrito    
         $this->cart->insert($data);
               
         // Redirigir a la página del carrito
@@ -89,6 +83,7 @@ class Carrito extends CI_Controller {
         // Redirigir a la página del carrito
         redirect('carrito/index','refresh');
     }
+    
     public function destroyCarrito()
     {
         $this->cart->destroy();

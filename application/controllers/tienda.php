@@ -13,16 +13,40 @@ class Tienda extends CI_Controller {
         $this->load->view('web-index.php',$data);        
         $this->load->view('inc2/footer.php');        
 	}
-
 	public function catalogo()
 	{				
-		$data = array();
-        // Obtener productos de la base de datos
-        $data['producto']=$this->producto_model->obtenerFila();
+		$lista=$this->producto_model->listar();
+		$data['productos']=$lista;	
 
 		$this->load->view('inc2/head.php');
         $this->load->view('inc2/nav.php');
         $this->load->view('web-catalogo.php',$data);        
         $this->load->view('inc2/footer.php');        
+	}	
+	public function detalleProducto()
+	{
+		$data = array();
+
+		$idproducto=$_POST['idproducto'];
+		$tallas=$this->producto_model->productoDetalleTalla($idproducto);
+		$producto=$this->producto_model->recuperarInfo($idproducto);
+		$data['productoTallas']=$tallas;
+		$data['productoInfo']=$producto;
+
+		$this->load->view('inc2/head.php');
+        $this->load->view('inc2/nav.php');
+        $this->load->view('web-detalleProducto.php',$data);        
+        $this->load->view('inc2/footer.php');  
+	}
+	public function compras()
+	{
+		$idusuario=$this->session->userdata('idusuario');
+		$lista=$this->venta_model->listarComprasCliente($idusuario);
+		$data['compras']=$lista;	
+
+		$this->load->view('inc2/head.php');
+        $this->load->view('inc2/nav.php');
+        $this->load->view('web-compras.php',$data);        
+        $this->load->view('inc2/footer.php');  
 	}
 }
