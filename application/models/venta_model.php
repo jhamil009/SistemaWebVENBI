@@ -76,7 +76,7 @@ class Venta_model extends CI_Model {
     //Ventana compras cliente
     public function listarComprasCliente($idCliente)
     {
-        $this->db->select('U.nombres, U.primerApellido, U.segundoApellido, SUM(DV.cantidad) AS cantidad, V.totalPagar, V.fechaRegistro, V.estado');
+        $this->db->select('U.nombres, U.primerApellido, U.segundoApellido, SUM(DV.cantidad) AS cantidad, V.totalPagar, V.fechaRegistro, V.estado, V.idVenta');
         $this->db->from('venta V');     
         $this->db->join('detalleventa DV', 'DV.idVenta = V.idVenta');  
         $this->db->join('usuario U', 'U.idUsuario = V.idUser');  
@@ -85,5 +85,30 @@ class Venta_model extends CI_Model {
         $this->db->order_by('V.idVenta', 'asc');
         
         return $this->db->get();
+    }
+
+    //Detalle de venta PDF
+    public function DetalleVentaPDF($idventa)
+    {
+        $this->db->select('M.nombreModelo, P.color, T.nombreTalla, DV.cantidad, P.precioUnitario as precio, DV.precioUnitario as subtotal, DV.idVenta');
+        $this->db->from('detalleventa DV');             
+        $this->db->join('stock S', 'S.idStock = DV.idStock');
+        $this->db->join('producto P', 'P.idProducto = S.idProducto');  
+        $this->db->join('modelo M', 'M.idModelo = P.idModelo');
+        $this->db->join('talla T', 'T.idTalla = S.idTalla');  
+        $this->db->where('DV.idVenta', $idventa);        
+        
+        return $this->db->get();
     }    
+
+    //Detalles del cliente
+    public function OtrosDetallesPDF($idventa)
+    {
+        $this->db->select('U.nombres, U.primerApellido, U.segundoApellido, V.fechaRegistro, V.totalPagar, V.idVenta');
+        $this->db->from('venta V');             
+        $this->db->join('usuario U', 'U.idUsuario = V.idUser');
+        $this->db->where('V.idVenta', $idventa);        
+        
+        return $this->db->get();
+    }
 }
